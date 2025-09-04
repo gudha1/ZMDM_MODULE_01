@@ -1,0 +1,94 @@
+managed with additional save implementation in class ZBP_I_TABLEFORMDMAUTHORIZ_S unique;
+strict;
+with draft;
+define behavior for ZI_TableForMdmAuthoriz_S alias TableForMdmAuthoAll
+draft table ZDB_MDM_AUT_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _TableForMdmAuthoriz { create ( features : instance ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+  }
+
+define behavior for ZI_TableForMdmAuthoriz alias TableForMdmAuthoriz ##UNMAPPED_FIELD
+persistent table ZDB_MDM_AUTH
+draft table ZDB_MDM_AUTH_D
+etag master Locallastchangedat
+lock dependent by _TableForMdmAuthoAll
+authorization dependent by _TableForMdmAuthoAll
+
+{
+  field ( mandatory : create )
+   UserId,
+   MaterialMaster;
+
+  field ( readonly )
+   SingletonID,
+   Localcreatedby,
+   Localcreatedat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   UserId,
+   MaterialMaster;
+
+  field ( notrigger )
+   SingletonID,
+   Localcreatedby,
+   Localcreatedat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZDB_MDM_AUTH
+  {
+    UserId = USER_ID;
+    MaterialMaster = MATERIAL_MASTER;
+    VendorMaster = VENDOR_MASTER;
+    CustomerMaster = CUSTOMER_MASTER;
+    Localcreatedby = LOCALCREATEDBY;
+    Localcreatedat = LOCALCREATEDAT;
+    Locallastchangedby = LOCALLASTCHANGEDBY;
+    Locallastchangedat = LOCALLASTCHANGEDAT;
+    Lastchangedat = LASTCHANGEDAT;
+  }
+
+  association _TableForMdmAuthoAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

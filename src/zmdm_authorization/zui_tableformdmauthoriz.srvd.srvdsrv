@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_TableForMdmAuthoriz_S'
+define service ZUI_TABLEFORMDMAUTHORIZ {
+  expose ZI_TABLEFORMDMAUTHORIZ_S as TableForMdmAuthoAll;
+  expose ZI_TABLEFORMDMAUTHORIZ as TableForMdmAuthoriz;
+}

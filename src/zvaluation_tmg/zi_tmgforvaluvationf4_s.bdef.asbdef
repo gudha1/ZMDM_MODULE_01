@@ -1,0 +1,74 @@
+managed with additional save implementation in class ZBP_I_TMGFORVALUVATIONF4_S unique;
+strict;
+with draft;
+define behavior for ZI_TmgForValuvationF4_S alias TmgForValuvationAll
+draft table ZVALUATION__D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _TmgForValuvationF4 { create ( features : instance ); with draft; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+  }
+
+define behavior for ZI_TmgForValuvationF4 alias TmgForValuvationF4 ##UNMAPPED_FIELD
+persistent table ZVALUATION_TMG
+draft table ZVALUATION_TM_D
+lock dependent by _TmgForValuvationAll
+authorization dependent by _TmgForValuvationAll
+
+{
+  field ( mandatory : create )
+   MaterialType,
+   Valuvation;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   MaterialType;
+
+  field ( notrigger )
+   SingletonID;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZVALUATION_TMG
+  {
+    MaterialType = MATERIAL_TYPE;
+    Valuvation = VALUVATION;
+    Valuationdes = valuationdes;
+  }
+
+  association _TmgForValuvationAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

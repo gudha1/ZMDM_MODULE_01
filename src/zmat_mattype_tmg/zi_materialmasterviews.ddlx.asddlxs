@@ -1,0 +1,51 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'MaterialMasterViews', 
+    typeNamePlural: 'MaterialMasterViewss', 
+    title: {
+      type: #STANDARD, 
+      label: 'Material Master Views control by Materia', 
+      value: 'ViewCode'
+    }
+  }
+}
+annotate view ZI_MaterialMasterViews with
+{
+  @UI.identification: [ {
+    position: 1 ,
+     label: 'View Code'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 ,
+     label: 'View Code'
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_MaterialMasterViews', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Material Master Views control by Materia', 
+    position: 1 
+  } ]
+  ViewCode;
+  
+  @UI.identification: [ {
+    position: 2 ,
+     label: 'View Name'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 ,
+     label: 'View Name'
+  } ]
+  ViewName;
+  
+  @UI.identification: [ {
+    position: 3 ,
+     label: 'Material type'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 ,
+     label: 'Material type'
+  } ]
+  Mtart;
+}

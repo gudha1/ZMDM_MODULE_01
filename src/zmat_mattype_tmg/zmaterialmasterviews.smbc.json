@@ -1,0 +1,39 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Material Master Views control by Materia",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZUI_MATERIALMASTERVIEWS_O4",
+    "serviceName": "ZUI_MATERIALMASTERVIEWS_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "MaterialMasterViAll",
+    "name": "Material Master Views control by Materia",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "MaterialMasterViAll",
+        "variantManagement": "control",
+        "showTransportSelectionStrip": true
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "MaterialMasterViews",
+        "tableType": "gridTable",
+        "selectionMode": "auto",
+        "rowCountMode": "auto",
+        "frozenColumnCount": 3,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      }
+    ]
+  }
+}

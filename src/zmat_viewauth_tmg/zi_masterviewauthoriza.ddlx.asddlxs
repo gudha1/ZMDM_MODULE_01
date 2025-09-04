@@ -1,0 +1,111 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'MasterViewAuthoriza', 
+    typeNamePlural: 'MasterViewAuthorizas', 
+    title: {
+      type: #STANDARD, 
+      label: 'Master View Authorization Table', 
+      value: 'ViewCode'
+    }
+  }
+}
+annotate view ZI_MasterViewAuthoriza with
+{
+  @UI.identification: [ {
+    position: 1 ,
+     label: 'View Code'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 ,
+     label: 'View Code'
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_MasterViewAuthoriza', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Master View Authorization Table', 
+    position: 1 
+  } ]
+  ViewCode;
+  
+  @UI.identification: [ {
+    position: 2 ,
+     label: 'User ID'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 ,
+     label: 'User ID'
+  } ]
+  Uname;
+  
+  @UI.identification: [ {
+    position: 3 , 
+    label: 'View Name'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'View Name'
+  } ]
+  ViewName;
+  
+  @UI.identification: [ {
+    position: 4 , 
+    label: 'Create'
+  } ]
+  @UI.lineItem: [ {
+    position: 4 , 
+    label: 'Create'
+  } ]
+  Create1;
+  
+  @UI.identification: [ {
+    position: 5 , 
+    label: 'Change'
+  } ]
+  @UI.lineItem: [ {
+    position: 5 , 
+    label: 'Change'
+  } ]
+  Change;
+  
+  @UI.identification: [ {
+    position: 6 , 
+    label: 'Display'
+  } ]
+  @UI.lineItem: [ {
+    position: 6 , 
+    label: 'Display'
+  } ]
+  Display;
+  
+  @UI.identification: [ {
+    position: 7 , 
+    label: 'Tasklist'
+  } ]
+  @UI.lineItem: [ {
+    position: 7 , 
+    label: 'Tasklist'
+  } ]
+  Tasklist;
+  
+  @UI.identification: [ {
+    position: 8 , 
+    label: 'Approver Id'
+  } ]
+  @UI.lineItem: [ {
+    position: 8 , 
+    label: 'Approver Id'
+  } ]
+  ApprId;
+  
+  @UI.identification: [ {
+    position: 9 , 
+    label: 'Ap Tasklist'
+  } ]
+  @UI.lineItem: [ {
+    position: 9 , 
+    label: 'Ap Tasklist'
+  } ]
+  ApprTask;
+}

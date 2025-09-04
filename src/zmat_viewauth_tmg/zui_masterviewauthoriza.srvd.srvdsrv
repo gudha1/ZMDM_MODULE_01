@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_MasterViewAuthoriza_S'
+define service ZUI_MASTERVIEWAUTHORIZA {
+  expose ZI_MASTERVIEWAUTHORIZA_S as MasterViewAuthorAll;
+  expose ZI_MASTERVIEWAUTHORIZA as MasterViewAuthoriza;
+}

@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_TmgForValuvationF4_S'
+define service ZUI_TMGFORVALUVATIONF4 {
+  expose ZI_TMGFORVALUVATIONF4_S as TmgForValuvationAll;
+  expose ZI_TMGFORVALUVATIONF4 as TmgForValuvationF4;
+}

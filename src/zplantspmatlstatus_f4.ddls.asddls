@@ -1,0 +1,11 @@
+@AbapCatalog.sqlViewName: 'ZPLANTSPMATL'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Cds For Plant-Sp.Matl Status F4'
+define view ZPlantSpMatlStatus_F4 as select from I_ProductStatusText
+{
+    key Status,
+    MaterialUsabilityProfileName
+}
+where Language = 'E'

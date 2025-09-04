@@ -1,0 +1,39 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "TMG for Valuation Class",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZUI_TMGFORVALUVATIONF4_O4",
+    "serviceName": "ZUI_TMGFORVALUVATIONF4_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "TmgForValuvationAll",
+    "name": "TMG for Valuation Class",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "TmgForValuvationAll",
+        "variantManagement": "control",
+        "showTransportSelectionStrip": true
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "TmgForValuvationAll",
+        "tableType": "gridTable",
+        "selectionMode": "auto",
+        "rowCountMode": "auto",
+        "frozenColumnCount": 1,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      }
+    ]
+  }
+}

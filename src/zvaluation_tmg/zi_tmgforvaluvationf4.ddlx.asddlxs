@@ -1,0 +1,50 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'TmgForValuvationF4', 
+    typeNamePlural: 'TmgForValuvationF4s', 
+    title: {
+      type: #STANDARD, 
+      label: 'TMG for Valuation Class', 
+      value: 'MaterialType'
+    }
+  }
+}
+annotate view ZI_TmgForValuvationF4 with
+{
+  @UI.identification: [ {
+    position: 1 , 
+    label: 'Material Type'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 , 
+    label: 'Material Type'
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_TmgForValuvationF4', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'TMG for Valuation Class', 
+    position: 1 
+  } ]
+  MaterialType;
+  
+  @UI.identification: [ {
+    position: 2 , 
+    label: 'Valuation Class'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 , 
+    label: 'Valuation Class'
+  } ]
+  Valuvation;
+   @UI.identification: [ {
+    position: 3 , 
+    label: 'Valuation Class Description'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'Valuation Class Description'
+  } ]
+  Valuationdes;
+}

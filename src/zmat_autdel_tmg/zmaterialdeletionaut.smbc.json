@@ -1,0 +1,39 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Material Deletion Authorization",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZUI_MATERIALDELETIONAUT_O4",
+    "serviceName": "ZUI_MATERIALDELETIONAUT_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "MaterialDeletionAll",
+    "name": "Material Deletion Authorization",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "MaterialDeletionAll",
+        "variantManagement": "control",
+        "showTransportSelectionStrip": true
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "MaterialDeletionAut",
+        "tableType": "gridTable",
+        "selectionMode": "auto",
+        "rowCountMode": "auto",
+        "frozenColumnCount": 1,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      }
+    ]
+  }
+}

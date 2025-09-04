@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_MaterialDeletionAut_S'
+define service ZUI_MATERIALDELETIONAUT {
+  expose ZI_MATERIALDELETIONAUT_S as MaterialDeletionAll;
+  expose ZI_MATERIALDELETIONAUT as MaterialDeletionAut;
+}

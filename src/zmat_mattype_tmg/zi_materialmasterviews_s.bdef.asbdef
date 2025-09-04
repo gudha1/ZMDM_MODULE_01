@@ -1,0 +1,77 @@
+managed with additional save implementation in class ZBP_I_MATERIALMASTERVIEWS_S unique;
+strict;
+with draft;
+define behavior for ZI_MaterialMasterViews_S alias MaterialMasterViAll
+draft table ZMAT_MATTYP_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _MaterialMasterViews { create ( features : instance ); with draft; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+  }
+
+define behavior for ZI_MaterialMasterViews alias MaterialMasterViews ##UNMAPPED_FIELD
+persistent table ZMAT_MATTYPE
+draft table ZMAT_MATTYPE_D
+lock dependent by _MaterialMasterViAll
+authorization dependent by _MaterialMasterViAll
+
+{
+  field ( mandatory : create )
+   ViewCode,
+   ViewName,
+   Mtart;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   ViewCode,
+   ViewName,
+   Mtart;
+
+  field ( notrigger )
+   SingletonID;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZMAT_MATTYPE
+  {
+    ViewCode = VIEW_CODE;
+    ViewName = VIEW_NAME;
+    Mtart = MTART;
+  }
+
+  association _MaterialMasterViAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

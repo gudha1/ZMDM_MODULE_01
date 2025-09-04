@@ -1,0 +1,57 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'TableForMdmAuthoriz', 
+    typeNamePlural: 'TableForMdmAuthorizs', 
+    title: {
+      type: #STANDARD, 
+      label: 'Table For MDM Authorization', 
+      value: 'UserId'
+    }
+  }
+}
+annotate view ZI_TableForMdmAuthoriz with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_TableForMdmAuthoriz', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Table For MDM Authorization', 
+    position: 1 
+  } ]
+  UserId;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  MaterialMaster;
+  
+  @UI.identification: [ {
+    position: 3 , 
+    label: 'VendorMaster'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'VendorMaster'
+  } ]
+  VendorMaster;
+  
+  @UI.identification: [ {
+    position: 4 , 
+    label: 'CustomerMaster'
+  } ]
+  @UI.lineItem: [ {
+    position: 4 , 
+    label: 'CustomerMaster'
+  } ]
+  CustomerMaster;
+}

@@ -1,0 +1,42 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'MaterialDeletionAut', 
+    typeNamePlural: 'MaterialDeletionAuts', 
+    title: {
+      type: #STANDARD, 
+      label: 'Material Deletion Authorization', 
+      value: 'Uname'
+    }
+  }
+}
+annotate view ZI_MaterialDeletionAut with
+{
+  @UI.identification: [ {
+    position: 1 ,
+     label: 'User ID'
+    
+  } ]
+  @UI.lineItem: [ {
+    position: 1 ,
+     label: 'User ID'
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_MaterialDeletionAut', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Material Deletion Authorization', 
+    position: 1 
+  } ]
+  Uname;
+  
+  @UI.identification: [ {
+    position: 2 , 
+    label: 'Deletion'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 , 
+    label: 'Deletion'
+  } ]
+  Delete1;
+}

@@ -1,0 +1,81 @@
+managed with additional save implementation in class ZBP_I_MASTERVIEWAUTHORIZA_S unique;
+strict;
+with draft;
+define behavior for ZI_MasterViewAuthoriza_S alias MasterViewAuthorAll
+draft table ZMAT_VIEWAU_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _MasterViewAuthoriza { create ( features : instance ); with draft; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+  }
+
+define behavior for ZI_MasterViewAuthoriza alias MasterViewAuthoriza ##UNMAPPED_FIELD
+persistent table ZMAT_VIEWAUTH
+draft table ZMAT_VIEWAUTH_D
+lock dependent by _MasterViewAuthorAll
+authorization dependent by _MasterViewAuthorAll
+
+{
+  field ( mandatory : create )
+   ViewCode,
+   Uname;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   ViewCode,
+   Uname;
+
+  field ( notrigger )
+   SingletonID;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZMAT_VIEWAUTH
+  {
+    ViewCode = VIEW_CODE;
+    Uname = UNAME;
+    ViewName = VIEW_NAME;
+    Create1 = CREATE1;
+    Change = CHANGE;
+    Display = DISPLAY;
+    Tasklist = TASKLIST;
+    ApprId = APPR_ID;
+    ApprTask = APPR_TASK;
+  }
+
+  association _MasterViewAuthorAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
